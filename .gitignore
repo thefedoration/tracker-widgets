@@ -1,0 +1,5 @@
+# ignore types of files 
+*.pyc
+
+# ignore static directory
+app/static/
