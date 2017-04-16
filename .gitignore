@@ -1,5 +1,6 @@
 # ignore types of files 
 *.pyc
 
-# ignore static directory
-app/static/
+# directories/files to ignore
+/app/static/
+/app/db.sqlite3

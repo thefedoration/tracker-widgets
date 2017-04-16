@@ -4,4 +4,4 @@ from .base import *
 
 
 DEBUG = True
-TEMPLATE_DEBUG = True
+# TEMPLATES[0]['DEBUG'] = True

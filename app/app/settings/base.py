@@ -4,13 +4,8 @@ from .settings_utils import (get_env_variable, retry, env_variable_exists)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+APP_ROOT = get_env_variable('PYTHONPATH')
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = '_+6t2@kc46v!f!_p-&vvjq71k9cwuuur^a)!1ksxt+u59i&c76'
 SECRET_KEY = get_env_variable('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -58,6 +53,7 @@ ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
     {
+        # 'DEBUG': False,
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
@@ -82,7 +78,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(APP_ROOT, 'db.sqlite3'),
     }
 }
 
@@ -138,3 +134,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(APP_ROOT, 'static')
