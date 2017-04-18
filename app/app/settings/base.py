@@ -10,7 +10,6 @@ SECRET_KEY = get_env_variable('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -35,8 +34,11 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'compressor',
     
     # our apps
+    'app',
+    'frontend',
 ]
 
 MIDDLEWARE = [
@@ -51,22 +53,35 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'app.urls'
 
+
+# TEMPLATES
 TEMPLATES = [
     {
-        # 'DEBUG': False,
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request', # `allauth` needs this from django
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request', # `allauth` needs this from django
             ],
         },
     },
 ]
+
+# TEMPLATE_LOADERS = (
+#     'django.template.loaders.filesystem.Loader',
+#     'django.template.loaders.app_directories.Loader',
+#     #   'django.template.loaders.eggs.Loader',
+# )
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
@@ -130,8 +145,42 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
+
+# STATIC FILES
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(APP_ROOT, 'static')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    #   'django.contrib.staticfiles.finders.DefaultStorageFinder',
+
+    # for django compressor
+    'compressor.finders.CompressorFinder',
+)
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+#     '/static/',
+# ]
+
+# 
+# # this busts the user cache when we change a file
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+# 
+# # django compressor settings
+# COMPRESS_ENABLED = True
+# COMPRESS_OFFLINE = True
+# 
+# COMPRESS_CSS_FILTERS = [
+#      'compressor.filters.cssmin.CSSMinFilter'
+# ]
+# COMPRESS_JS_FILTERS = [
+#      'compressor.filters.jsmin.JSMinFilter'
+# ]
+# 
+# # so compressor also compiles scss files
+# COMPRESS_PRECOMPILERS = (
+#     ('text/x-scss', 'django_libsass.SassCompiler'),
+# )

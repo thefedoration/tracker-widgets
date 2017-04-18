@@ -4,4 +4,9 @@ from .base import *
 
 
 DEBUG = True
-# TEMPLATES[0]['DEBUG'] = True
+# TEMPLATES[0]['OPTIONS']['DEBUG'] = True
+
+
+# django compressor settings
+COMPRESS_ENABLED = False
+COMPRESS_OFFLINE = False

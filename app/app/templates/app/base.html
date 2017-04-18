@@ -1,0 +1,26 @@
+{% include 'app/doctype.html' %}
+	<head>
+		<meta charset="utf-8" />
+		<title>{% block title %}tracker {{STATIC_URL}} {{STATIC_ROOT}}{% endblock %}</title>
+        
+		{% block meta_description %}
+			{% include 'app/og.html' %}
+		{% endblock %}
+
+		{% include 'app/imports.html' %}
+
+		{% block additional_headers %}{% endblock %}
+
+		{% include 'app/analytics_head.html' %}
+	</head>
+
+	<body class="{% block body_class %}{% endblock %}">
+		{% include 'app/analytics_body.html' %}
+
+		<!--START Primary-->
+		{% block content %}{% endblock %}
+        
+		<!--END Primary-->
+		{% block additional_footers %}{% endblock %}
+	</body>
+</html>
