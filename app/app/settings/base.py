@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'compressor',
+    'webpack_loader',
     
     # our apps
     'app',
@@ -160,10 +161,10 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-#     '/static/',
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/static/',
+]
 
 # 
 # # this busts the user cache when we change a file

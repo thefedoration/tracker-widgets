@@ -4,3 +4,4 @@
 # directories/files to ignore
 /app/static/
 /app/db.sqlite3
+/app/frontend/node_modules/
