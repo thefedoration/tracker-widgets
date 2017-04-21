@@ -8,7 +8,7 @@ export default class FrontendAppContainer extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-            <Headline>Sample App!</Headline>
+            <Headline>Sample App!!!</Headline>
           </div>
         </div>
       </div>

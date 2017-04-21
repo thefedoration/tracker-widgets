@@ -148,7 +148,7 @@ USE_TZ = True
 
 
 # STATIC FILES
-
+####################################################
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(APP_ROOT, 'static')
 
@@ -163,7 +163,7 @@ STATICFILES_FINDERS = (
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/static/',
+    # '/static/',
 ]
 
 # 
@@ -185,3 +185,13 @@ STATICFILES_DIRS = [
 # COMPRESS_PRECOMPILERS = (
 #     ('text/x-scss', 'django_libsass.SassCompiler'),
 # )
+
+
+# WEBPACK
+####################################################
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/local/',  # end with slash
+        'STATS_FILE': os.path.join(APP_ROOT, 'frontend/webpack-stats-local.json'),
+    }
+}
