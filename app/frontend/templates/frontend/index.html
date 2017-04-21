@@ -1,4 +1,17 @@
 {% extends "app/base.html" %}
+
+{% block additional_headers %}
+
+    {% load compress %}
+    
+    {% compress css %}
+    	<link href="{{STATIC_URL}}css/app/admin-lte/admin-lte.min.css" rel="stylesheet"/>
+        <link href="{{STATIC_URL}}css/app/admin-lte/all-skins.css" rel="stylesheet"/>
+    {% endcompress %}
+
+{% endblock additional_headers %}
+
+
 {% load render_bundle from webpack_loader %}
 
 {% block content %}
