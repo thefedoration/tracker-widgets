@@ -9,8 +9,8 @@ import {
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 
-import * as reducers from "./reducers"
-import FrontendAppContainer from "./containers/FrontendAppContainer"
+import * as reducers from "./_main/reducers"
+import FrontendAppContainer from "./_main/containers/FrontendAppContainer"
 
 let finalCreateStore = compose(
   applyMiddleware(thunk),
