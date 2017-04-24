@@ -30,9 +30,12 @@ import { Link } from 'react-router';
 
 
 export default class Main extends Component {
-  render() {
-      return (
-        <h1>hello world</h1>
-      )
+    render() {
+        return (
+            <div>
+                <h1>hello world!</h1>
+                {React.cloneElement(this.props.children, {})}
+            </div>
+        )
     }
 }
