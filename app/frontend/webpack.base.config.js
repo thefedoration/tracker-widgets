@@ -20,6 +20,10 @@ module.exports = {
 				use: 'babel-loader',
 				include: path.join(__dirname, 'react')
 			},
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
 			{
                 test: /\.scss$/,
                 use: [{
@@ -58,7 +62,11 @@ module.exports = {
 			{
 				test: /\.(png|jpg)$/,
 				loader: 'file-loader'
-			}
+			},
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: 'file-loader?name=public/fonts/[name].[ext]'
+            }
 		]
 	},
 
