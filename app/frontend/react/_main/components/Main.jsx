@@ -12,24 +12,7 @@ export default class Main extends Component {
                 <Header />
                 <Sidebar />
                 <div className="content-wrapper">
-                    <section className="content-header">
-                        <h1>
-                            hello world!
-                            <small>welcome</small>
-                        </h1>
-                        <ol className="breadcrumb">
-                            <li>
-                                <a href="#">
-                                    <i className="fa fa-dashboard"></i> Home
-                                </a>    
-                            </li>
-                            <li><a href="#">Layout</a></li>
-                            <li className="active">Fixed</li>
-                        </ol>
-                    </section>
-                    <section className="content">
-                        {React.cloneElement(this.props.children, {})}
-                    </section>
+                    {React.cloneElement(this.props.children, {})}
                 </div>
             </div>
         )

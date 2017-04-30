@@ -3,6 +3,7 @@ import { Route, IndexRedirect, IndexRoute } from 'react-router';
 
 import Main from './components/Main';
 import Today from '../today/components/Today';
+import Analytics from '../analytics/components/Analytics';
 
 // import { loggedIn } from './store/auth';
 function requireAuth (nextState, replace) {
@@ -20,6 +21,7 @@ export default (
         <IndexRedirect to="/today" />
         <Route component={Main}>
             <Route path="/today" component={Today} />
+            <Route path="/analytics" component={Analytics} />
         </Route>
     </Route>
 );

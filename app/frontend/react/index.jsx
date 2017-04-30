@@ -3,7 +3,12 @@ import { render } from 'react-dom';
 import { hashHistory } from 'react-router';
 import { AppContainer } from 'react-hot-loader'; // AppContainer is a necessary wrapper component for HMR
 
+// style imports
 import styles from '../static/css/style.scss';
+
+// javascript imports
+import adminLteJs from '../node_modules/admin-lte/dist/js/app.js'
+import slimscrollJs from '../node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js'
 
 // redux
 import configureStore from './_main/store/configureStore';
