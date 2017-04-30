@@ -22,6 +22,8 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli', # needs to be before django.contrib.admin
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,6 +38,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'compressor',
     'webpack_loader',
+    'rest_framework',
     
     # our apps
     'app',
@@ -73,7 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request', # `allauth` needs this from django
+                'django.template.context_processors.request', # need for allauth, grapelli
             ],
         },
     },
@@ -195,4 +198,15 @@ WEBPACK_LOADER = {
         'BUNDLE_DIR_NAME': 'bundles/local/',  # end with slash
         'STATS_FILE': os.path.join(APP_ROOT, 'frontend/webpack-stats-local.json'),
     }
+}
+
+
+# REST FRAMEWORK
+####################################################
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
