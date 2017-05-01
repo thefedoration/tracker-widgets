@@ -36,6 +36,13 @@ class WidgetDownloadSet(models.QuerySet):
     # active
     def active(self):
         return self.filter(is_active=True).distinct()
+        
+    # live
+    def live(self):
+        return self.filter(
+            widget_version__is_active=True,
+            widget_version__is_approved=True
+        ).distinct()
 
 
         
