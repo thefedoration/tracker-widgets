@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import Widgets from "./Widgets"
+
 export default class Today extends Component {
     render() {
         return (
@@ -12,7 +14,7 @@ export default class Today extends Component {
                     </h1>
                 </section>
                 <section className="content">
-                    
+                    <Widgets />
                 </section>
             </div>
         );

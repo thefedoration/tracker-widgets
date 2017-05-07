@@ -3,6 +3,10 @@
 {% block additional_headers %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    
+    <script>
+        var CSRF_TOKEN = "{{csrf_token}}";
+    </script>
 {% endblock %}
 
 {% block body_class %}hold-transition skin-blue sidebar-collapse sidebar-mini{% endblock %}
