@@ -10,7 +10,7 @@ export default function widgets(state=initialState, action={}) {
     case widgetsActions.FETCH_WIDGETS:
         return {...state, isLoadingWidgets: true}
     case widgetsActions.FETCH_WIDGETS_SUCCESS:
-        return {...state, isLoadingWidgets: false, widgets: action.res}
+        return {...state, isLoadingWidgets: false, widgets: action.result}
     case widgetsActions.FETCH_WIDGETS_ERROR400:
     case widgetsActions.FETCH_WIDGETS_ERROR500:
     case widgetsActions.FETCH_WIDGETS_FAILURE:

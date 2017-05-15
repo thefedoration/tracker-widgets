@@ -3,7 +3,9 @@ import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import PropTypes from "prop-types"
 
-import * as widgetActions from "../actions/widgetsActions"
+import UserWidget from "./UserWidget"
+
+import * as widgetsActions from "../actions/widgetsActions"
 
 
 class Widgets extends React.Component {
@@ -20,28 +22,21 @@ class Widgets extends React.Component {
             return this.renderLoading()
         }
         
-        let widgetNodes = [];
-        widgets.forEach((item, index) => {
-            let node = (
-                <div key={item.hash}>{item.name}</div>
-            )
-            widgetNodes.push(node)
-        })
-
         return (
-            <div>{widgetNodes}</div>
+            <div className="row">
+                {widgets.map(userWidget =>
+                    <UserWidget
+                        key={userWidget.hash}
+                        {...userWidget}
+                    />
+                )}
+            </div>
         )
     }
     
     renderLoading() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-12">
-                        Loading...
-                    </div>
-                </div>
-            </div>
+            <div>Loading...</div>
         )
     }
 }
@@ -50,7 +45,7 @@ Widgets.propTypes = {
     widgets: PropTypes.array,
     isFetching: PropTypes.bool.isRequired,
     actions: PropTypes.object.isRequired,
-};
+}
 
 function mapStateToProps(state) {
     return {
@@ -61,7 +56,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(widgetActions, dispatch)
+        actions: bindActionCreators(widgetsActions, dispatch)
     };
 }
 

@@ -7,14 +7,14 @@ export const FETCH_WIDGETS_ERROR500 = "FETCH_WIDGETS_ERROR500"
 export const FETCH_WIDGETS_FAILURE = "FETCH_WIDGETS_FAILURE"
 export function fetchUserWidgets() {
     return function (dispatch) {
-        let url = "/api/widgets/downloads/"
         dispatch({type: FETCH_WIDGETS})
-        return authenticatedRequest(
+        let url = "/api/widgets/downloads/"
+        return request(
             url, {},
-            (json) => { dispatch({type: FETCH_WIDGETS_SUCCESS, res: json}) },
-            (json) => { dispatch({type: FETCH_WIDGETS_ERROR400, res: json}) },
-            (res) => { dispatch({type: FETCH_WIDGETS_ERROR500, res: res}) },
-            (ex) => { dispatch({type: FETCH_WIDGETS_FAILURE, error: ex}) },
+            (json) => { dispatch({type: FETCH_WIDGETS_SUCCESS, result: json}) },
+            (json) => { dispatch({type: FETCH_WIDGETS_ERROR400, result: json}) },
+            (result) => { dispatch({type: FETCH_WIDGETS_ERROR500, result: result}) },
+            (exception) => { dispatch({type: FETCH_WIDGETS_FAILURE, error: exception}) },
         )
     }
 }
